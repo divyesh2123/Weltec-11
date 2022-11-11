@@ -42,39 +42,3 @@ const reviews = [
 let index =0;
 
 
-function next()
-{
-  if(index < reviews.length-1)
-  {
-   index = index +1;
-  }
-   display();
-}
-
-function display()
-{
-  document.getElementById("author").innerHTML =
-  reviews[index].name;
-  document.getElementById("job").innerHTML =
-  reviews[index].job;
-  document.getElementById("info").innerHTML =
-  reviews[index].text;
-  document.getElementById("person-img").src =
-  reviews[index].img
-
-  
-}
-
-function pre()
-{
-  
-  if(index > 0)
-  {
-    index = index -1;
-  }
-  
-
-  
-
-  display();
-}
