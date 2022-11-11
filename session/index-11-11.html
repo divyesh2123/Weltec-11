@@ -8,15 +8,83 @@
 </head>
 <body>
 
-    <input type="text"  onkeyup="test(event)"/>
-    <button ondblclick="test()">Click</button>
-    <script>
-        function test(e)
+<input type="text" id="itens" />
+
+<button id="myclick" onclick="addItems()">Display</button>
+   
+<div id="diitem"></div>
+
+<script>
+
+    let myitems = [];
+    let isEdit = -1;
+
+
+
+    function display()
+    {
+        const myitemsArray = myitems.map(function(value,index) {
+
+            return `<div><div>${value}</div><button onclick='editItems(${index})'>edit</button><button onclick="removeItmes('${index}')">delete</button></div>`
+
+
+        });
+
+        document.getElementById("diitem").innerHTML = myitemsArray.join(" ");
+
+
+    }
+
+    function addItems()
+    {
+        if(isEdit != -1)
         {
-            
-            console.log(e.keyCode);
+            myitems[isEdit] = document.getElementById("itens").value
+        }
+        else
+        {
+        var myitem = document.getElementById("itens").value;
+        myitems.push(myitem);
         }
 
-    </script>
+        isEdit=-1;
+
+        display();
+
+
+
+    }
+
+    function removeItmes(index)
+    {
+        var  myitems1 = myitems.filter(
+            function(value,op) {
+
+            if(op != index)
+            {
+
+                return value;
+            }
+
+        });
+
+        myitems = myitems1;
+
+        display();
+
+    }
+
+    function editItems(index)
+    {
+        isEdit= index;
+        document.getElementById("itens").value =myitems[index];
+
+
+    }
+
+
+</script>
+
+   
 </body>
 </html>
