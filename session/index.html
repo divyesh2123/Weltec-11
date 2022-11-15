@@ -8,36 +8,30 @@
 </head>
 <body>
 
-    <input type="text" />
+    <div id="t"></div>
 
-    <input type="number" />
-    <div id="disaply"></div>
-    <button onclick="this.innerHTML = Date()">test</button>
+    <button onclick="myclick()">click</button>
     <script>
 
-        var myEmployee = [ 
-            
+        var a=5;
+
+        function myclick()
         {
-            firstName : "div",
-            lastNAme : "patel"
-        },
-        {
-            firstName : "rahul",
-            lastNAme : "shah"
+
+            a= a+1;
+
+            document.getElementById("t").innerHTML =a;
         }
-    
-    
-    
-    ]
-     
-    console.log(myEmployee[2].lastNAme)
-   
-  
 
-</script>
+        function mydbclick()
+        {
 
+            a= a+1;
 
- 
+            document.getElementById("t").innerHTML =a;
+        }
+
+    </script>
     
 </body>
 </html>

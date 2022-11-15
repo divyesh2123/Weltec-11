@@ -80,3 +80,49 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+let mybutton = menu.map(function(element,index){
+
+  return `<div><button type="button" class="filter-btn" onclick=filterarray('${element.category}')>${element.category}</button></div>`
+});
+
+
+
+function display(mydata)
+{
+  let myhtml = mydata.map(function(element,index) {
+
+    return ( `<article class="menu-item">
+    <img src="${element.img}" alt="menu item" class="photo" />
+    <div class="item-info">
+      <header>
+        <h4>${element.title}</h4>
+        <h4 class="price">${element.price}</h4>
+      </header>
+      <p class="item-text">
+        ${element.desc}
+      </p>
+    </div>
+  </article>`)
+  
+  })
+
+  document.getElementById("test").innerHTML =myhtml.join(" ");
+}
+
+function filterarray(category)
+{
+  const myfilterData = menu.filter((value,index)=> {
+
+    return value.category == category;
+  })
+
+  display(myfilterData);
+
+}
+
+
+
+display(menu);
+
+document.getElementById("buttoncon").innerHTML = mybutton.join(" ");
