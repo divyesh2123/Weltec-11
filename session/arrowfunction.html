@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="t"></div>
+
+    <button id="d" a="5"  >MyClick</button>
+    <script>
+
+
+        class MyDisplay
+        {
+            id=5;
+            myData ()
+       {
+        document.getElementById("t").innerHTML += this.id;
+
+       }
+       test = ()=> {
+        document.getElementById("t").innerHTML += this.a;
+       }
+
+        }
+
+        var d = new MyDisplay();
+document.getElementById("d").
+addEventListener("click", d.myData);
+
+      
+
+       
+
+       
+       
+       
+
+    </script>
+    
+</body>
+</html>

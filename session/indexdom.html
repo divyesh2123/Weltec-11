@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+
+        Name <input type="text" id="name" />
+        Marks <input type="text" id="Marks" />
+
+        <button onclick="test()">Increment</button>
+
+
+    </div>
+
+    <div>
+
+        
+        <label>Change Value</label>
+
+        
+        <input type="text" id="value" />
+
+        <input type="button" value="changevalue"/>
+  
+  
+        <input type="button" value="checkbox" onclick="mycheckbox()"/>  </div>
+
+
+        
+  
+    <div id="display"></div>
+  <script>
+
+        function test()
+        {
+            let mydata= document.getElementById("Marks").value;
+
+           
+            document.getElementById("display").innerHTML += `<div><input type="text" value=${mydata}> <input type="checkbox" class='test'/> <button class="but" onclick="incrment(this)" >+ </button> <button>- </button>  </div>`
+       
+            
+        }
+
+        function incrment(data)
+        {
+           console.log(data.parentElement.getElementsByTagName("input").type = "Cje");
+
+        }
+
+
+        
+        function mycheckbox()
+        {
+
+            let t = document.querySelectorAll("input:checked")
+
+            console.log(t);
+        }
+            
+          
+
+
+    </script>
+</body>
+</html>

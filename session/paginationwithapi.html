@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="table"></table>
+    <div id="buttons"></div>
+    <script>
+
+let myData = [];
+        fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(y=>y.json())
+        .then(y=> {
+            displaywithpagination(y);
+        })
+
+        function displaywithpagination(y)
+        {
+            
+            myData  = y;
+            let perPage =20;
+            let totalPage = Math.ceil(y.length / perPage);
+
+            displayButotn(1,totalPage);
+
+            displayMyData(0,perPage)
+
+
+
+
+
+        }
+
+        function displayMyData(start,end)
+        {
+            let d = myData.slice(start,end);
+
+          let myd=  d.map((value)=> {
+                return `<tr><td>${value.userId}</td>
+                    <td>${value.id}
+                 </td><td>${value.title}</td><td>${value.completed}</td></tr>`
+            })
+
+            document.getElementById("table").innerHTML = myd.join(" ");
+        }
+
+        function displayButotn(start,end)
+        {
+            for(i=start;i<=end;i++)
+            {
+                document.getElementById("buttons").innerHTML +=`<button onclick="paginationButton(${i})">${i}</button>` 
+            }
+
+        }
+
+        function paginationButton(currentpage)
+        {
+            let pageSize = 20;
+            let start = (currentpage-1)*pageSize;
+            let end = start +20;
+            displayMyData(start,end)
+        }
+
+    </script>
+    
+</body>
+</html>
