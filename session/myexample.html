@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Document</title>
+ 
+</head>
+<body id="row mypage">
+  <div class="col-lg-5">
+  <table class="table table-bordered">
+    <tr>
+      <td>Name:</td><td><input type="text" id="txtName">
+      </td>
+      <td>Marks</td><td><input type="text" id="txtMark" maxlength="4" onkeypress="OnlyNum(event)"></td>
+      <td><button onclick="Add()">Add</button></td>
+    </tr>
+    <tr>
+      <td colspan="2">Enter Mark:</td>
+      <td colspan="2"><input type="text" id="txtChangeVal"></td>
+      <td><button onclick="ChangeVal()">ChangeMark</button></td>
+    </tr>
+  </table>
+  <table class="table table-bordered pt-30">
+    <tbody id="Grid">
+    </tbody>
+</table>
+</div>
+<script>
+   Add = ()=>{
+ 
+      let Name = document.getElementById("txtName").value;
+      let Mark = document.getElementById("txtMark").value;
+      if(Name == "" || Mark == "")
+      {
+        alert("Please Enter Value");
+      }
+      else
+      {
+        document.getElementById("Grid").innerHTML += `<tr><td><input type="Checkbox"><input type="text" readonly value=${Name}><input type="text" class="markval"  value=${Mark}><button onClick="Increment(this)">+</button><button onClick="Decrement(this)">-</button></td></tr>`
+        document.getElementById("txtName").value="";
+        document.getElementById("txtMark").value="";
+        document.getElementById("txtName").focus();
+        document.getElementById("txtName").select();
+      }
+   }
+   function OnlyNum(event){
+    let Name = document.getElementById("txtName").value;
+    if(event.key>=0 && event.key<=9)
+    {
+      
+    }
+    else{
+      event.preventDefault();
+    }
+   }
+   
+   Increment =(value1)=>{
+    let a = parseInt(value1.parentElement.getElementsByClassName("markval")[0].value);
+    value1.parentElement.getElementsByClassName("markval")[0].value = a+1;
+   }
+
+   Decrement =(value1)=>{
+    let a = parseInt(value1.parentElement.getElementsByClassName("markval")[0].value);
+    value1.parentElement.getElementsByClassName("markval")[0].value = a-1;
+   }
+
+   ChangeVal = ()=>{
+    debugger;
+    let a = document.querySelectorAll("input:checked").length;
+    let changeval = document.getElementById("txtChangeVal").value;
+    if(a == 0){
+      let marklength = document.querySelectorAll(".markval").length;
+      for(i=0; i<marklength; i++)
+      {
+        document.querySelectorAll(".markval")[i].value = changeval;
+      }
+    }
+    else
+    {
+      let marklength = document.getElementsByClassName("markval").length;
+      for(i=0; i<marklength; i++)
+      {
+        let d = document.getElementsByClassName("markval")[i].parentElement.querySelector("input:checked");
+        
+        if(d)
+        {
+            document.getElementsByClassName("markval")[i].value = 678;
+
+        }
+      }
+    }
+   }
+
+</script>
+
+</body>
+</html>
