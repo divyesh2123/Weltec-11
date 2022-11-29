@@ -9,10 +9,10 @@
 <body>
     <div class="main">
         <label>All</label>
-        <input type="checkbox" />
+        <input type="checkbox"   onclick="myParent(this)"/>
         <div class="first">
             <label>Checkbox1</label>
-            <input type="checkbox" />
+            <input type="checkbox"  onclick="myParent(this)"/>
 
             <div>
                 <input type="checkbox" />
@@ -33,7 +33,7 @@
         <div class="secound">
 
             <label>Checkbox1</label>
-            <input type="checkbox" />
+            <input type="checkbox"  onclick="myParent(this)"/>
 
             <div>
                 <input type="checkbox" />
@@ -52,6 +52,22 @@
 
 
     </div>
+
+    <script>
+
+        function myParent(element)
+        {
+            let d = element.parentElement.querySelectorAll("input[type='checkbox']")
+           
+            for (const iterator of d) {
+                
+                iterator.checked = true;
+            }
+           
+           
+        }
+
+    </script>
     
 </body>
 </html>

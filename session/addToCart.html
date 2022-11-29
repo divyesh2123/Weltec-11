@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="dis"></div>
+
+    <script>
+
+        let myCartData = [];
+        let products = [];
+
+     fetch("https://fakestoreapi.com/products").
+     then(y=>y.json()).then(y=> {
+        display(y);
+     })
+
+     function display(value)
+     {
+        products = value;
+        document.getElementById("dis").innerHTML = value
+        .map((elemt,index)=> {
+
+            return(`<div>${elemt.title} <button onclick=AddToCartData(${index})>AddToCart</button> </div>`)
+
+        }).join(" ");
+
+
+
+     }
+
+     function AddToCartData(index)
+     {
+        let data = products[index];
+
+        data["qty"] =1;
+
+        if(myCartData.length == 0)
+        {
+            myCartData.push(data);
+        }
+        else
+        {   
+            let findProduct = myCartData.find((v)=> {
+                return v.id == data.id;
+            });
+
+            if(findProduct == undefined || findProduct == null)
+            {
+
+                    myCartData.push(data);
+            }
+            else
+            {
+                let myneearray = myCartData.map((c)=> {
+
+                    if(c.id == data.id)
+                    {
+                        c.qty = c.qty+1;
+
+                    }
+
+                    return c;
+                })
+
+                myCartData = myneearray;
+
+
+            }
+
+
+
+            
+        }
+
+       
+
+
+        
+
+        
+
+        console.log(myCartData)
+
+     }
+
+    </script>
+    
+</body>
+</html>
